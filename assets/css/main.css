@@ -1,0 +1,68 @@
+body {
+    padding-bottom: 5 rem; /* Ajuste o valor conforme a altura do footer */
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+header {
+    background-color: #000000;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+}
+
+
+/* Estilo para o menu */
+nav {
+    background-color: #ffcc00; /* Cor de fundo */
+    padding: 0.5rem;
+}
+
+nav ul {
+    list-style-type: none; /* Remove os marcadores da lista */
+    display: flex; /* Alinha os itens horizontalmente */
+    justify-content: space-between; /* Alinha o primeiro item à esquerda e o resto à direita */
+    margin: 0;
+    padding: 0;
+    width: 100%; /* Ocupa toda a largura do nav */
+}
+
+nav ul li {
+    margin: 0 10px;
+}
+
+nav ul li.left {
+    margin-right: auto; /* Força o item "Início" a ficar à esquerda */
+}
+
+nav ul li a {
+    color: #000000; /* Cor dos links */
+    text-decoration: none; /* Remove o sublinhado dos links */
+    font-size: 1em;
+    transition: color 0.3s ease; /* Transição suave para hover */
+}
+
+nav ul li a:hover {
+    color: #ffffff; /* Cor dos links ao passar o mouse */
+}
+
+
+main {
+    margin: 0px;
+    padding: 0px;
+}
+
+p {
+    text-align: justify;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1px;
+    bottom: 0;
+    width: 100%;
+}
+
