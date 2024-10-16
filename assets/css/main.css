@@ -61,27 +61,3 @@ footer {
     bottom: 0;
     width: 100%;
 }
-
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
-}
-
-.service-card {
-    text-align: center;
-}
-
-.service-icon {
-    font-size: 50px;
-    color: #ffcc00;
-}
-
-.service-link {
-    color: #000000;
-    text-decoration: none; /* Remove underline */
-}
-
-.service-link:hover {
-    text-decoration: underline; /* Adiciona sublinhado ao passar o mouse */
-}
