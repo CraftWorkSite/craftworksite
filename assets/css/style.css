@@ -1,3 +1,78 @@
+@media (max-width: 600px) {
+    .services-grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .service-card {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+}
+
+body {
+    padding-bottom: 5rem; /* Ajuste o valor conforme a altura do footer */
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #000000;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+}
+
+/* Estilo para o menu */
+nav {
+    background-color: #ffcc00; /* Cor de fundo */
+    padding: 0.5rem;
+}
+
+nav ul {
+    list-style-type: none; /* Remove os marcadores da lista */
+    display: flex; /* Alinha os itens horizontalmente */
+    justify-content: space-between; /* Alinha o primeiro item à esquerda e o resto à direita */
+    margin: 0;
+    padding: 0;
+    width: 100%; /* Ocupa toda a largura do nav */
+}
+
+nav ul li {
+    margin: 0 10px;
+}
+
+nav ul li.left {
+    margin-right: auto; /* Força o item "Início" a ficar à esquerda */
+}
+
+nav ul li a {
+    color: #000000; /* Cor dos links */
+    text-decoration: none; /* Remove o sublinhado dos links */
+    font-size: 1em;
+    transition: color 0.3s ease; /* Transição suave para hover */
+}
+
+nav ul li a:hover {
+    color: #ffffff; /* Cor dos links ao passar o mouse */
+}
+
+main {
+    margin: 0;
+    padding: 0;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1px;
+    bottom: 0;
+    width: 100%;
+}
+
 /* Estilo para a section */
 #home {
     display: flex;
@@ -25,16 +100,18 @@
     background-color: #ffffff;
     padding: 20px;
 }
-#sobre{
-    background-color: #ffffff;
-    padding: 20px;
-}
-#contato{
+
+#sobre {
     background-color: #ffffff;
     padding: 20px;
 }
 
-#cor{
+#contato {
+    background-color: #ffffff;
+    padding: 20px;
+}
+
+#cor {
     color: #000000;
 }
 
@@ -45,16 +122,19 @@
     width: 100%; /* Ocupa toda a largura da página */
     z-index: 1000; /* Garante que fique sobre outros elementos */
 }
+
 .barra-social .icon {
     color: #fff; /* Cor dos ícones (branco) */
-    margin:0 20px; /* Espaçamento entre os ícones */
+    margin: 0 20px; /* Espaçamento entre os ícones */
     text-align: center;
     font-size: 20px; /* Tamanho dos ícones */
     transition: color 0.3s ease; /* Animação de transição suave ao passar o mouse */
 }
+
 .barra-social .icon:hover {
     color: #1db954; /* Cor dos ícones ao passar o mouse (verde claro) */
 }
+
 .faq-container {
     max-width: 800px;
     text-align: center;
@@ -66,8 +146,8 @@
 }
 
 .faq {
-    background-color: #ffffff; /* Cor de fundo azul */
-    color: rgb(0, 0, 0); /* Texto branco */
+    background-color: #ffffff; /* Cor de fundo branco */
+    color: rgb(0, 0, 0); /* Texto preto */
     padding: 15px; /* Espaçamento interno */
     border: none; /* Sem borda */
     border-radius: 8px; /* Cantos arredondados */
@@ -154,11 +234,89 @@
 
 .price {
     font-size: 1.5em; /* Tamanho do preço */
-    color: #007bff; /* Cor do preço */
+    color: #ffcc00; /* Cor do preço */
     margin: 10px 0; /* Margem acima e abaixo do preço */
 }
 
 .description {
-    color: #555; /* Cor do texto da descrição */
+    color: #000000; /* Cor do texto da descrição */
     margin: 10px 0; /* Margem acima e abaixo da descrição */
+}
+
+.contato {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+.inputs {
+    display: flex;
+    justify-content: space-between;
+}
+
+input, textarea {
+    width: 48%; /* Largura de cada input */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 25px; /* Arredondar bordas dos inputs e textarea */
+    font-size: 16px;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #000000;
+    color: #fff;
+    border: none;
+    border-radius: 120px; /* Arredondar bordas
+    border-radius: 120px; /* Arredondar bordas do botão */
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #ffcc00; /* Cor de fundo ao passar o mouse */
+}
+
+.detalhes-contato {
+    max-width: 100%;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.detalhes-contato h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Cria 2 colunas */
+    gap: 20px; /* Espaçamento entre os itens da grade */
+}
+
+.item {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.item h3 {
+    margin: 0 0 10px;
+    color: #000000;
+}
+
+.item p {
+    margin: 0;
+    color: #555;
 }

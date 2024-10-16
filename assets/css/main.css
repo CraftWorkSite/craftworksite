@@ -1,3 +1,15 @@
+@media (max-width: 600px) {
+    .services-grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .service-card {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+}
+
 body {
     padding-bottom: 5 rem; /* Ajuste o valor conforme a altura do footer */
     font-family: Arial, sans-serif;
