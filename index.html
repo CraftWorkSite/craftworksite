@@ -5,171 +5,168 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Craft Work Site</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">        
-    <link rel="stylesheet" href="assets/css/main.css"> <!-- Link para o CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
-    <header>
+    <header class="header">
         <h1>Craft Work Site</h1>
     </header>
     
-    <nav>    
+    <div class="social-bar">
+        <a href="https://wa.me/5543984471575" target="_blank" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.instagram.com/craftworksite/" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+        <a href="https://github.com/seuPerfil" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
+        <a href="https://www.youtube.com/c/seuCanal" target="_blank" class="social-icon"><i class="fab fa-youtube"></i></a>
+    </div>
+
+    <nav class="nav">    
         <ul>
-            <li><a href="#home">Início</a></li>
-            <li><a href="#servicos">Produtos</a></li>
-            <li><a href="#sobre">Sobre</a></li>
-            <li><a href="#contato">Contato</a></li>
+            <li><a href=".hero">Início</a></li>
+            <li><a href=".products">Produtos</a></li>
+            <li><a href=".about">Sobre</a></li>
+            <li><a href=".contact">Contato</a></li>
         </ul>
     </nav>
     
     <main>
-        <section id="home">
-            <div id="intro">
-                <h2 style="text-align: center;">Bem-vindo à Craft Work Site</h2>
-                <p style="text-indent: 50px;">Na Craft Work Site, transformamos ideias em soluções digitais eficientes. Nossa equipe de especialistas está comprometida em criar plataformas inovadoras e funcionais, adaptadas às necessidades específicas de cada cliente. Trabalhamos com criatividade e tecnologia para garantir que sua marca tenha uma presença online sólida e impactante, capaz de atrair e fidelizar clientes.</p>
+        <section class="hero">
+            <div class="hero-intro">
+                <h2>Bem-vindo à Craft Work Site</h2>
+                <p>Na Craft Work Site, transformamos ideias em soluções digitais eficientes. Nossa equipe de especialistas está comprometida em criar plataformas inovadoras e funcionais, adaptadas às necessidades específicas de cada cliente. Trabalhamos com criatividade e tecnologia para garantir que sua marca tenha uma presença online sólida e impactante, capaz de atrair e fidelizar clientes.</p>
             </div>
-            <div id="images">
-                <script src="https://cdn.lottielab.com/s/lottie-player@1.x/player-web.min.js"></script>
-                <lottie-player src="https://cdn.lottielab.com/l/EwR2zv1ztgDYG7.json" loop autoplay alt="Craft Work Site Animation"></lottie-player>       
+            <div class="hero-animation">
+                <lottie-player src="https://cdn.lottielab.com/l/EwR2zv1ztgDYG7.json" loop autoplay></lottie-player>       
             </div>
         </section>
 
-        <div class="barra-social">
-            <a href="https://wa.me/5543984471575" target="_blank" class="icon"><i class="fab fa-whatsapp"></i></a>
-            <a href="https://www.instagram.com/craftworksite/" target="_blank" class="icon"><i class="fab fa-instagram"></i></a>
-            <a href="https://github.com/seuPerfil" target="_blank" class="icon"><i class="fab fa-github"></i></a>
-            <a href="https://www.youtube.com/c/seuCanal" target="_blank" class="icon"><i class="fab fa-youtube"></i></a>
-        </div>
-        
-        <section id="servicos">
-            <h2 style="text-align: center;">Nossos Serviços</h2>
+        <section class="services">
+            <h2>Nossos Serviços</h2>
             <div class="services-grid">
-                <!-- Serviços -->
                 <div class="service-card">
                     <i class="fas fa-laptop-code service-icon"></i>
-                    <h3><a href="#desenvolvimento-sites" class="service-link">Desenvolvimento de Sites</a></h3>
+                    <h3><a href="#" class="service-link">Desenvolvimento de Sites</a></h3>
                     <p>Criamos sites comerciais e empresariais eficientes.</p>
                 </div>
                 <div class="service-card">
                     <i class="fas fa-robot service-icon"></i>
-                    <h3><a href="#chatbots" class="service-link">Desenvolvimento de Chatbots</a></h3>
+                    <h3><a href="#" class="service-link">Desenvolvimento de Chatbots</a></h3>
                     <p>Automatize o atendimento ao cliente.</p>
                 </div>
                 <div class="service-card">
                     <i class="fas fa-search service-icon"></i>
-                    <h3><a href="#seo" class="service-link">Otimização para Mecanismos de Busca (SEO)</a></h3>
+                    <h3><a href="#" class="service-link">Otimização para Mecanismos de Busca (SEO)</a></h3>
                     <p>Aumente a visibilidade do seu site.</p>
                 </div>
                 <div class="service-card">
                     <i class="fas fa-shopping-cart service-icon"></i>
-                    <h3><a href="#ecommerce" class="service-link">Desenvolvimento de E-commerce</a></h3>
+                    <h3><a href="#" class="service-link">Desenvolvimento de E-commerce</a></h3>
                     <p>Plataformas seguras para vendas online.</p>
                 </div>
                 <div class="service-card">
                     <i class="fas fa-mobile-alt service-icon"></i>
-                    <h3><a href="#design-responsivo" class="service-link">Design Responsivo</a></h3>
+                    <h3><a href="#" class="service-link">Design Responsivo</a></h3>
                     <p>Experiência intuitiva em qualquer dispositivo.</p>
                 </div>
                 <div class="service-card">
                     <i class="fas fa-tools service-icon"></i>
-                    <h3><a href="#manutencao-suporte" class="service-link">Manutenção e Suporte Técnico</a></h3>
+                    <h3><a href="#" class="service-link">Manutenção e Suporte Técnico</a></h3>
                     <p>Suporte contínuo para manter seu site eficiente.</p>
                 </div>                
             </div>
         </section>    
 
-        <section id="Perguntas_Frequentes">
+        <section class="faq">
             <div class="faq-container">
-                <h1 style="text-align: center;">Perguntas Frequentes</h1>
-        
-                <div class="faq">
-                    <h2>Qual o preço dos sites?</h2>
+                <h2>Perguntas Frequentes</h2>
+                <div class="faq-item">
+                    <h3>Qual o preço dos sites?</h3>
                     <p>Nossos sites começam a partir de R$ 999,00 reais!</p>
                 </div>
-                <div class="faq">
-                    <h2>Os sites são responsivos?</h2>
+                <div class="faq-item">
+                    <h3>Os sites são responsivos?</h3>
                     <p>Claro! Eles ficam lindos em qualquer dispositivo!</p>
                 </div>
-                <div class="faq">
-                    <h2>Os sites são seguros?</h2>
+                <div class="faq-item">
+                    <h3>Os sites são seguros?</h3>
                     <p>Sim! Segurança é nossa prioridade!</p>
                 </div>
-                <div class="faq">
-                    <h2>Qual o prazo de entrega?</h2>
+                <div class="faq-item">
+                    <h3>Qual o prazo de entrega?</h3>
                     <p>Entregamos em até 30 dias úteis!</p>
                 </div>
-                <div class="faq">
-                    <h2>Como posso entrar em contato?</h2>
+                <div class="faq-item">
+                    <h3>Como posso entrar em contato?</h3>
                     <p>Fale com <a href="https://wa.me/5543984471575" target="_blank">Fagner Ribeiro pelo WhatsApp!</a></p>
                 </div>
             </div>
         </section>
         
-        <section id="plans">
-            <h2>Nossos Planos</h2>
-            <div class="plans-container">
-                <div class="plan">
+        <section class="pricing">
+            <h2 style="text-align: center;">Nossos Planos</h2>
+            <div class="plans-grid">
+                <div class="plan-card">
                     <h3>Plano Básico</h3>
-                    <p class="price">R$ 999/Uma vez</p>
+                    <p class="price">R$ 999,00</p>
                     <p class="description">Ideal para pequenas empresas que querem brilhar!</p>
                 </div>
-                <div class="plan">
+                <div class="plan-card">
                     <h3>Plano Avançado</h3>
-                    <p class="price">R$ 1.499/Uma vez</p>
+                    <p class="price">R$ 1.499,00</p>
                     <p class="description">Perfeito para negócios em crescimento e ambiciosos!</p>
                 </div>
-                <div class="plan">
+                <div class="plan-card">
                     <h3>Plano Premium</h3>
-                    <p class="price">R$ 2.499/Uma vez</p>
+                    <p class="price">R$ 2.499,00</p>
                     <p class="description">Para quem quer o melhor e não aceita menos!</p>
                 </div>
-                <div class="plan">
+                <div class="plan-card">
                     <h3>Plano Personalizado</h3>
-                    <p class="price">Sob consulta/Uma vez</p>
+                    <p class="price">Sob consulta</p>
                     <p class="description">Crie um site sob medida para suas necessidades!</p>
                 </div>
             </div>
         </section>
 
-        <section id="sobre">
-            <div class="contato">
-                <h1 style="text-align: center; color: #000000;">Entre em Contato</h1>
-                <div class="inputs">
+        <section class="contact">
+            <div class="contact-form">
+                <h2>Entre em Contato</h2>
+                <div class="form-inputs">
                     <input type="text" placeholder="Nome" required>
                     <input type="email" placeholder="Email" required>
                 </div>
                 <textarea placeholder="Mensagem" required></textarea>
                 <button type="submit">Enviar Mensagem</button>
             </div>
-            <div class="detalhes-contato">
+            <div class="contact-info">
                 <h2>Detalhes de Contato</h2>
-                <div class="grid">
-                    <div class="item">
+                <div class="info-grid">
+                    <div class="info-item">
                         <h3>Telefone</h3>
                         <p>(43) 9 8447-1575</p>
                     </div>
-                    <div class="item">
+                    <div class="info-item">
                         <h3>Email</h3>
                         <p>craftworksite@gmail.com</p>
                     </div>
-                    <div class="item">
-                        <h3>Site</h3>
-                        <p>craftworksite.com</p>
+                    <div class="info-item">
+                        <h3>Endereço</h3>
+                        <p>Apucarana Pr</p>
                     </div>
-                    <div class="item">
+                    <div class="info-item">
                         <h3>Horário de Funcionamento</h3>
                         <p>Seg-Sex: 9h-18h</p>
                     </div>
                 </div>
             </div>
         </section>
-
     </main>
     
-    <footer>
-        <p>&copy; 2024 Craft Work Site. Todos os direitos reservados.</p>
+    <footer class="footer">
+        <p>© 2024 Craft Work Site. Todos os direitos reservados.</p>
     </footer>
     
+    <script src="https://cdn.lottielab.com/s/lottie-player@1.x/player-web.min.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
 </html>
