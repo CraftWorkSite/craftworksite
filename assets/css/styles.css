@@ -1,75 +1,60 @@
 /* Responsive Design */
-@media (max-width: 768px) {
-    .hero {
-        grid-template-columns: 1fr;
-    }
-}
-/* Hero Section */
 .hero {
-    display: grid;
-    grid-template-columns: 2fr 2fr;
-    gap: 2rem;
-    margin-left: 50px;
-    margin-right: 50px;
-    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px; /* Espaço entre os elementos */
 }
 
 .hero-intro {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 1.5rem;
-}
-
-.hero-intro h2 {
-    color: #000000;
-    text-align: center;
-}
-
-.hero-intro p {
-    text-indent: 50px;
+    flex: 1; /* Faz com que o texto ocupe espaço proporcional */
 }
 
 .hero-animation {
-    max-width: 100%;
-    height: auto;
-}
-/* Services Section */
-.services {
-    margin: 50px;
-    background-color: #ffffff;
+    flex: 1; /* Faz com que a animação ocupe espaço proporcional */
+    display: flex;
+    justify-content: center;
 }
 
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column; /* Coloca os itens em coluna no mobile */
+        align-items: center; /* Centraliza os itens */
+    }
+
+    .hero-intro, .hero-animation {
+        width: 100%; /* Faz os itens ocuparem toda a largura */
+        text-align: center; /* Centraliza o texto */
+    }
+}
+.services {
+    text-align: center;
+    padding: 20px;
+}
 .services h2 {
     text-align: center;
     margin-bottom: 3rem;
     color: #000000;
 }
-
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
-    padding: 0 1rem;
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas no desktop */
+    gap: 20px; /* Espaçamento entre os cartões */
 }
 
 .service-card {
-    background-color: #ffffff;
-    padding: 2rem;
+    border: 1px solid #ddd;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    text-align: center;
-    transition: transform 0.3s;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-
 .service-card:hover {
     transform: translateY(-5px);
 }
-
 .service-icon {
-    font-size: 2.5rem;
+    font-size: 40px;
     color: #ffcc00;
-    margin-bottom: 1rem;
+    margin-bottom: 10px;
 }
 .service-link:hover {
     color: inherit;  
@@ -79,6 +64,13 @@
     color: #000000;
     text-decoration: none;
 }
+
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr; /* Uma coluna no mobile */
+    }
+}
+/*--------------------------------------------*/
 .faq-container {
     max-width: 800px;
     text-align: center;
@@ -159,7 +151,7 @@
     flex-wrap: wrap;
     gap: 20px;
     padding: 40px 20px;
-    background-color: #f5f5f5;
+    background-color: #ffffff;
 }
 
 .contact-form, 
