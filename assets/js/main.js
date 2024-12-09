@@ -34,3 +34,28 @@ faqHeaders.forEach(header => {
         }
     });
 });
+document.getElementById("enviar").addEventListener("click", function (event) {
+    // Prevenir o comportamento padrão do botão submit
+    event.preventDefault();
+
+    // Capturar os valores dos campos
+    const nome = document.getElementById("nome").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const mensagem = document.getElementById("mensagem").value.trim();
+
+    // Verificar se os campos estão preenchidos
+    if (!nome || !email || !mensagem) {
+        alert("Por favor, preencha todos os campos!");
+        return;
+    }
+
+    // Número de telefone do WhatsApp
+    const telefone = "5543984471575";
+
+    // Criar a URL do WhatsApp
+    const texto = `Olá, meu nome é ${nome}, meu email é ${email}. Gostaria de enviar a seguinte mensagem: ${mensagem}`;
+    const url = `https://wa.me/${telefone}?text=${encodeURIComponent(texto)}`;
+
+    // Abrir o WhatsApp
+    window.open(url, "_blank");
+});
