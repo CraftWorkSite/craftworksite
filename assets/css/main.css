@@ -82,7 +82,13 @@ main {
         right: 5px; /* Ajusta a barra social para dispositivos menores */
     }
 }
-
+.section {
+    display: none; /* Esconde todas as seções por padrão */
+  }
+  
+  .section.active {
+    display: block; /* Mostra apenas a seção ativa */
+  }
 
 
 
