@@ -1,0 +1,148 @@
+/* --- ESTILOS GERAIS E RESET --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Arial', sans-serif; line-height: 1.6; color: #000000; }
+main { font-family: 'Arial', sans-serif; line-height: 1.6; color: #000000; overflow-x: hidden; margin: 50px; }
+
+/* --- REGRA GLOBAL PARA CENTRALIZAR TÍTULOS DAS SEÇÕES --- */
+main h2 {
+    text-align: center;
+    margin-bottom: 2.5rem; /* Aumenta o espaço abaixo dos títulos */
+}
+
+/* --- COMPONENTES PRINCIPAIS (HEADER, NAV, FOOTER) --- */
+.header, .footer { background-color: #000000; color: white; text-align: center; padding: 1rem; }
+.nav { background-color: #ffcc00; padding: 10px; }
+.nav ul { display: flex; justify-content: center; list-style: none; gap: 2rem; padding: 0; flex-wrap: wrap; }
+.nav a { color: #000000; text-decoration: none; font-weight: 500; transition: color 0.3s; cursor: pointer; }
+.nav a:hover { color: #ffffff; }
+
+/* ESTILO PARA O LINK ATIVO DO MENU */
+.nav a.active-link { color: #ffffff; font-weight: bold; }
+
+/* --- BARRA SOCIAL --- */
+.social-bar { position: fixed; right: 10px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 1rem; z-index: 10; }
+.social-icon { color: #000000; font-size: 1.5rem; transition: color 0.3s, transform 0.3s; }
+.social-icon:hover { color: #ffcc00; transform: translateY(-5px); }
+
+/* --- NAVEGAÇÃO POR ABAS (BASE) --- */
+main > section { display: none; }
+main > section.active { display: block; }
+section#hero.active, section#contact.active { display: flex; align-items: center; } /* Adicionado align-items para melhor alinhamento vertical */
+
+/* --- ESTILOS DAS SEÇÕES --- */
+/* Seção Hero */
+.hero-intro, .hero-animation { flex: 1; }
+.hero-animation { display: flex; justify-content: center; }
+
+/* Seção Serviços */
+.services { text-align: center; padding: 20px 0; }
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 colunas iguais */
+  gap: 20px;
+}
+.service-card { border: 1px solid #ddd; border-radius: 8px; padding: 20px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); transition: transform 0.3s; }
+.service-card:hover { transform: translateY(-5px); }
+.service-icon { font-size: 40px; color: #ffcc00; margin-bottom: 10px; }
+.service-link { color: #000000; text-decoration: none; }
+
+/* Seção FAQ */
+.faq { padding: 2rem; }
+.faq-container { max-width: 800px; margin: 0 auto; }
+.faq-item { background-color: #ffffff; padding: 1.5rem; margin-bottom: 1rem; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); cursor: pointer; transition: background-color 0.3s; }
+.faq-item:hover { background-color: #ffcc00; }
+.faq-item h3 { font-size: 16px; font-weight: bold; }
+.faq-item p { display: none; margin-top: 10px; overflow: hidden; max-height: 0; transition: max-height 0.3s ease, padding 0.3s ease; }
+.faq-item.open p { display: block; }
+
+/* Seção Preços */
+.pricing { padding: 2rem; }
+.plans-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+.plan-card { background-color: #ffffff; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.plan-card:hover { transform: translateY(-5px); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); }
+.price { font-size: 1.5rem; color: #ffcc00; margin: 1rem 0; }
+
+/* Seção Contato */
+.contact-form, .contact-info { flex: 1 1 48%; min-width: 300px; background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); }
+.contact-form .form-inputs { display: flex; gap: 10px; flex-wrap: wrap; }
+.contact-form input, .contact-form textarea { width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; }
+.contact-form button { width: 100%; padding: 12px; background-color: #ffcc00; border: none; border-radius: 4px; font-size: 18px; font-weight: bold; cursor: pointer; transition: background-color 0.3s ease; }
+.contact-form button:hover { background-color: #ffb700; }
+.info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+.info-item h3 { margin: 0 0 8px; }
+/* --- NOVOS ESTILOS PARA PÁGINAS DE SERVIÇO DETALHADAS --- */
+
+.service-detail-page {
+    max-width: 800px; /* Limita a largura para melhor leitura */
+    margin: 2rem auto; /* Centraliza a caixa na tela */
+    padding: 2.5rem;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.service-detail-icon {
+    font-size: 3.5rem; /* Ícone maior */
+    color: #ffcc00;   /* Cor de destaque do projeto */
+    margin-bottom: 1.5rem;
+}
+
+.service-detail-page h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.service-detail-page p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #333;
+    margin-bottom: 2.5rem;
+    text-align: justify; /* Melhora a leitura de textos longos */
+}
+
+/* Estilo para os botões de ação */
+.service-cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap; /* Garante que os botões se ajustem em telas pequenas */
+}
+
+/* Botão genérico */
+.btn {
+    text-decoration: none;
+    color: #000000;
+    padding: 12px 24px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+/* Botão principal (amarelo) */
+.btn-primary {
+    background-color: #ffcc00;
+}
+.btn-primary:hover {
+    background-color: #ffb700;
+    transform: translateY(-3px);
+}
+
+/* Botão secundário (contorno) */
+.btn-secondary {
+    background-color: transparent;
+    border-color: #ccc;
+}
+.btn-secondary:hover {
+    background-color: #f0f0f0;
+    border-color: #aaa;
+}
+
+
+/* --- DESIGN RESPONSIVO --- */
+@media (max-width: 768px) {
+    main { margin: 20px; }
+    .nav ul { flex-direction: column; gap: 1rem; text-align: center; }
+    section#hero.active, section#contact.active { flex-direction: column; }
+}
