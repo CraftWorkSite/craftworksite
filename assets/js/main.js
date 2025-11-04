@@ -1,44 +1,50 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-    // --- 1. LÓGICA DE NAVEGAÇÃO POR ABAS E MENU ATIVO ---
+    // --- 1. LÓGICA DE NAVEGAÇÃO HÍBRIDA (SPA + MÚLTIPLAS PÁGINAS) ---
     const navLinks = document.querySelectorAll('.nav a');
     const sections = document.querySelectorAll('main > section');
 
+    // Função para mostrar seções na página principal (index.html)
     function showSection(sectionId) {
-        // Esconde todas as seções
         sections.forEach(section => {
             section.classList.remove('active');
         });
 
-        // Mostra a seção alvo
         const targetSection = document.querySelector(sectionId);
         if (targetSection) {
             targetSection.classList.add('active');
         }
 
-        // Atualiza o link ativo no menu
         navLinks.forEach(link => {
-            // Remove a classe de todos os links
             link.classList.remove('active-link');
-            // Adiciona a classe apenas ao link que corresponde à seção ativa
             if (link.getAttribute('href') === sectionId) {
                 link.classList.add('active-link');
             }
         });
     }
 
+    // Adiciona o listener de clique a cada link do menu
     navLinks.forEach(link => {
         link.addEventListener('click', function(event) {
-            event.preventDefault();
-            const targetId = this.getAttribute('href');
-            if (targetId && targetId.startsWith('#')) {
-                showSection(targetId);
+            const targetHref = this.getAttribute('href');
+
+            // VERIFICAÇÃO PRINCIPAL:
+            // Se o link for uma âncora interna (começa com #), use a lógica de SPA.
+            if (targetHref && targetHref.startsWith('#')) {
+                event.preventDefault(); // Impede o "pulo" da página
+                showSection(targetHref);
             }
+            // Se for um link para outra página (ex: "blog.html"), NÃO FAÇA NADA.
+            // Apenas deixe o navegador seguir o link normalmente.
         });
     });
 
-    // Mostra a primeira seção ('#hero') e ativa o primeiro link por padrão
-    showSection('#hero');
+    // Lógica para a página inicial (index.html)
+    const isHomePage = window.location.pathname.endsWith('/') || window.location.pathname.endsWith('index.html');
+    if (isHomePage) {
+        // Mostra a primeira seção ('#hero') por padrão
+        showSection('#hero');
+    }
 
 
     // --- 2. LÓGICA DO ACORDEÃO (FAQ) ---
@@ -48,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const header = item.querySelector('h3');
         const content = item.querySelector('p');
 
-        item.addEventListener('click', () => { // Evento de clique no item inteiro
+        item.addEventListener('click', () => {
             const isOpen = item.classList.toggle('open');
             
             if (isOpen) {
@@ -89,4 +95,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+
+    // --- 4. LÓGICA PARA ATIVAR LINK DO MENU EM PÁGINAS DIFERENTES (EX: BLOG) ---
+    const currentPage = window.location.pathname.split('/').pop(); // Pega o nome do arquivo atual (ex: "blog.html")
+    
+    if (currentPage && !isHomePage) {
+         navLinks.forEach(link => {
+            const linkPage = link.getAttribute('href').split('/').pop();
+            if (linkPage === currentPage) {
+                link.classList.add('active-link');
+            } else {
+                link.classList.remove('active-link');
+            }
+        });
+    }
 });
