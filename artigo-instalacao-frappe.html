@@ -67,7 +67,7 @@
         }
 
         /* --- Outros Elementos --- */
-        ul { padding-left: 20px; }
+        ul, ol { padding-left: 20px; }
         li { margin-bottom: 0.8em; }
         strong { color: #111; }
         
@@ -76,6 +76,8 @@
             padding: 10px 20px;
             margin: 20px 0;
             background-color: #f8f9fa;
+        }
+        blockquote p {
             font-style: italic;
         }
 
@@ -124,22 +126,22 @@
                 <li>Feche o terminal atual e abra um novo. A partir de agora, <strong>sempre</strong> troque para este usuário antes de começar a trabalhar:</li>
             </ol>
             <pre><code>su - frappe</code></pre>
-            <blockquote><strong>Importante:</strong> O hífen (<code>-</code>) é essencial. Ele simula um login completo, carregando o ambiente e as configurações corretas do usuário <code>frappe</code>.</blockquote>
+            <blockquote><p><strong>Importante:</strong> O hífen (<code>-</code>) é essencial. Ele simula um login completo, carregando o ambiente e as configurações corretas do usuário <code>frappe</code>.</p></blockquote>
 
             <h2>Passo 3: Instalando as Dependências do Sistema</h2>
             <p>Agora, como usuário <code>frappe</code>, vamos instalar todos os pacotes de software necessários.</p>
             <h3>1. Atualize a lista de pacotes do Ubuntu:</h3>
             <pre><code>sudo apt update && sudo apt upgrade -y</code></pre>
             <h3>2. Instale os pacotes essenciais:</h3>
-            <p>Isso inclui Git, Python, MariaDB (banco de dados), Redis (cache), e outras bibliotecas necessárias.</p>
-            <pre><code>sudo apt install -y git python3-dev python3-pip python3-venv mariadb-server redis-server libmariadb-dev pkg-config curl xvfb libfontconfig1</code></pre>
+            <p>Isso inclui Git, Python, MariaDB, Redis, e outras bibliotecas necessárias.</p>
+            <pre><code>sudo apt install -y git python3-dev python3-pip python3-venv mariadb-server redis-server libmariadb-dev pkg-config curl</code></pre>
             <h3>3. Configure e proteja o MariaDB:</h3>
             <p>Este script interativo definirá a senha do superusuário (<code>root</code>) do banco de dados.</p>
             <pre><code>sudo mariadb-secure-installation</code></pre>
             <p>Siga as instruções na tela. É <strong>extremamente importante que você defina e anote a senha do root do MariaDB</strong>, pois ela será necessária em breve.</p>
 
             <h2>Passo 4: Instalando Node.js e Ferramentas de Frontend</h2>
-            <p>O Frappe utiliza Node.js e Yarn para gerenciar seus assets de frontend. A melhor forma de instalar o Node.js é através do NVM (Node Version Manager).</p>
+            <p>O Frappe utiliza Node.js e Yarn. A melhor forma de instalar o Node.js é através do NVM (Node Version Manager).</p>
             <ol>
                 <li><strong>Instale o NVM:</strong></li>
             </ol>
@@ -156,26 +158,47 @@
                 <li><strong>Instale o Yarn globalmente:</strong></li>
             </ol>
             <pre><code>npm install -g yarn</code></pre>
+
+            <h2>Passo 5: Instalando o Gerador de PDF (wkhtmltopdf)</h2>
+            <p>Esta ferramenta é essencial para que o Frappe Framework possa criar documentos em PDF, como relatórios e faturas.</p>
+            <ol>
+                <li><strong>Instale as dependências gráficas necessárias:</strong></li>
+            </ol>
+            <pre><code>sudo apt install -y xvfb libfontconfig1</code></pre>
+            <ol start="2">
+                <li><strong>Baixe o pacote para Ubuntu 22.04 (Jammy):</strong></li>
+            </ol>
+            <pre><code>wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/wkhtmltox_0.12.6.1-2.jammy_amd64.deb</code></pre>
+            <ol start="3">
+                <li><strong>Instale o pacote baixado:</strong></li>
+            </ol>
+            <pre><code>sudo dpkg -i wkhtmltox_0.12.6.1-2.jammy_amd64.deb</code></pre>
+            <blockquote>
+                <h3>Dica: E se eu já baixei o arquivo pelo navegador no Windows?</h3>
+                <p>Se você baixou o arquivo <code>.deb</code> na sua pasta de Downloads do Windows, pode acessá-lo diretamente pelo terminal do WSL. O seu disco <code>C:</code> está montado em <code>/mnt/c/</code>. O comando para acessar a pasta e instalar será algo assim (substitua <code>&lt;seu-usuario-windows&gt;</code> pelo seu nome de usuário do Windows):</p>
+                <pre><code># 1. Navegue até a sua pasta de Downloads do Windows
+cd /mnt/c/Users/&lt;seu-usuario-windows&gt;/Downloads
+
+# 2. Instale o pacote a partir desta pasta
+sudo dpkg -i wkhtmltox_0.12.6.1-2.jammy_amd64.deb</code></pre>
+            </blockquote>
             
-            <h2>Passo 5: Instalando o Frappe Bench (A Ferramenta de Linha de Comando)</h2>
+            <h2>Passo 6: Instalando o Frappe Bench</h2>
             <p><code>bench</code> é a CLI que você usará para gerenciar todo o seu ambiente Frappe.</p>
             <ol>
                 <li><strong>Instale o <code>frappe-bench</code> usando <code>pip</code>:</strong></li>
             </ol>
             <pre><code>pip install frappe-bench</code></pre>
-            <blockquote><strong>Nota:</strong> Em sistemas Ubuntu mais recentes, você pode encontrar um erro sobre "externally-managed-environment". Se isso ocorrer, use a flag <code>--break-system-packages</code>.</blockquote>
             <ol start="2">
                 <li><strong>Verifique se o <code>bench</code> está no seu PATH:</strong></li>
             </ol>
             <p>Execute <code>bench --version</code>. Se o comando não for encontrado, adicione o diretório local de binários ao seu PATH:</p>
             <pre><code>echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
 source ~/.bashrc</code></pre>
-            <p>Execute <code>bench --version</code> novamente para confirmar.</p>
             
-            <h2>Passo 6: Criando seu Ambiente ("Bench") e Primeiro Site</h2>
-            <p>Finalmente, vamos criar a pasta do projeto e o seu primeiro site Frappe.</p>
+            <h2>Passo 7: Criando seu Ambiente ("Bench") e Primeiro Site</h2>
             <ol>
-                <li><strong>Inicialize a "bench":</strong> Este comando criará uma pasta (<code>frappe-bench</code>), baixará o Framework e configurará o ambiente.</li>
+                <li><strong>Inicialize a "bench":</strong></li>
             </ol>
             <pre><code># Certifique-se de estar no seu diretório home
 cd ~
@@ -190,9 +213,33 @@ bench init frappe-bench</code></pre>
             <pre><code>bench new-site meu-site.local</code></pre>
             <p>O sistema pedirá a <strong>senha do <code>root</code> do MariaDB</strong> e, em seguida, você criará a senha para o usuário <strong><code>Administrator</code></strong> do seu site Frappe. Anote esta senha!</p>
 
-            <h2>Passo 7: Iniciando o Servidor</h2>
+            <h2>Passo 8: Iniciando o Servidor</h2>
             <p>Com tudo configurado, inicie o servidor de desenvolvimento.</p>
             <pre><code>bench start</code></pre>
+            
+            <!-- SEÇÃO ADICIONADA -->
+            <h2>Passo 9: Dicas de Desenvolvimento - O Ambiente Virtual (env)</h2>
+            <p>Excelente ponto! Embora o comando <code>bench</code> gerencie o ambiente virtual para você na maioria das vezes, um desenvolvedor frequentemente precisa "entrar" nesse ambiente para tarefas específicas. A pasta <code>env</code> dentro do seu <code>frappe-bench</code> é um ambiente virtual Python isolado.</p>
+            
+            <h3>Quando Ativar o Ambiente Manualmente?</h3>
+            <ul>
+                <li>Para instalar uma biblioteca Python com <code>pip</code> que será usada apenas neste projeto (ex: <code>pip install requests</code>).</li>
+                <li>Para usar o console interativo do Frappe com o comando <code>bench --site meu-site.local console</code>.</li>
+                <li>Para rodar scripts Python diretamente no contexto do Frappe.</li>
+            </ul>
+
+            <h3>Comandos Essenciais</h3>
+            <p>Para ativar o ambiente, faça o seguinte:</p>
+            <pre><code># 1. Certifique-se de estar na pasta frappe-bench
+cd ~/frappe-bench
+
+# 2. Ative o ambiente
+source env/bin/activate</code></pre>
+            <p>Você saberá que funcionou, pois o seu prompt do terminal mudará, exibindo <strong><code>(env)</code></strong> no início. Por exemplo: <code>(env) frappe@SEU-PC:~/frappe-bench$</code></p>
+            <p>Para sair do ambiente e voltar ao terminal normal, simplesmente digite:</p>
+            <pre><code>deactivate</code></pre>
+            
+            <blockquote><p><strong>Lembrete Importante:</strong> Para comandos normais como <code>bench start</code>, <code>bench update</code> ou <code>bench new-site</code>, você <strong>não precisa</strong> ativar o ambiente manualmente. O <code>bench</code> faz isso por você nos bastidores. Esta ativação manual é apenas para as tarefas de desenvolvimento avançadas listadas acima.</p></blockquote>
             
             <hr>
             
