@@ -3,145 +3,204 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guia: Instalando o Frappe Framework no Windows com WSL - Craft Work Site</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="icon" href="https://lh3.googleusercontent.com/ogw/AF2bZygfOb3auLe8xuFEzGxH0yGap2nrQlTwDW0g8wvt5EHJSw=s32-c-mo">
+    <title>Guia Definitivo: Instalando o Frappe Framework no Windows com WSL</title>
+    <style>
+        /* --- Estilo Base e Tipografia --- */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background-color: #fdfdfd;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        h1, h2, h3 {
+            color: #111;
+            line-height: 1.3;
+            margin-top: 1.5em;
+            margin-bottom: 0.8em;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 8px;
+        }
+        
+        h1 { font-size: 2.2em; }
+        h2 { font-size: 1.8em; }
+        h3 { font-size: 1.4em; border-bottom: none; }
+
+        p { margin-bottom: 1.2em; }
+        a { color: #007bff; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* --- Estilo para Blocos de Código --- */
+        pre {
+            background-color: #2d2d2d; /* Fundo escuro */
+            color: #f1f1f1; /* Texto claro */
+            padding: 18px;
+            border-radius: 6px;
+            overflow-x: auto; /* Adiciona scroll horizontal se o código for muito longo */
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+            font-size: 0.95em;
+        }
+
+        code {
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+            background-color: #e8e8e8;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+        
+        pre > code {
+            background-color: transparent;
+            padding: 0;
+            font-size: 1em;
+        }
+
+        /* --- Outros Elementos --- */
+        ul { padding-left: 20px; }
+        li { margin-bottom: 0.8em; }
+        strong { color: #111; }
+        
+        blockquote {
+            border-left: 4px solid #007bff;
+            padding: 10px 20px;
+            margin: 20px 0;
+            background-color: #f8f9fa;
+            font-style: italic;
+        }
+
+    </style>
 </head>
 <body>
-    <header class="header">
-        <h1>Craft Work Site</h1>
-    </header>
 
-    <nav class="nav">
-        <ul>
-            <li><a href="index.html#hero">Início</a></li>
-            <li><a href="index.html#services">Serviços</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="index.html#pricing">Preços</a></li>
-            <li><a href="index.html#faq">FAQ</a></li>
-            <li><a href="index.html#contact">Contato</a></li>
-        </ul>
-    </nav>
-    
-    <main>
-        <div class="article-content">
-            <a href="blog.html" class="back-link">&larr; Voltar para o Blog</a>
+    <div class="container">
+        <header>
             <h1>Guia Definitivo: Instalando o Frappe Framework no Windows com WSL</h1>
-    
+            <p><strong>Publicado em:</strong> 04 de Novembro de 2025</p>
+        </header>
+
+        <article>
+            <p>Este guia detalha o processo completo para instalar um ambiente de desenvolvimento robusto para o <strong>Frappe Framework</strong> no Windows 10 ou 11, utilizando o Subsistema Windows para Linux (WSL) com Ubuntu 22.04. O foco é exclusivamente na instalação do framework base, preparando o terreno para a criação de aplicativos customizados ou a futura instalação de apps como o ERPNext.</p>
+
+            <h2>Pré-requisitos</h2>
+            <ul>
+                <li>Windows 10 ou 11.</li>
+                <li>Conexão com a internet.</li>
+                <li>Terminal com privilégios de Administrador (PowerShell ou Prompt de Comando).</li>
+            </ul>
+
             <h2>Passo 1: Habilitando o WSL e Instalando o Ubuntu 22.04</h2>
+            <p>Se você ainda não possui o WSL configurado, este é o ponto de partida.</p>
             <ol>
-                <li>Abra o <strong>PowerShell</strong> como Administrador e instale o WSL com o Ubuntu:
-                    <pre><code>wsl --install -d Ubuntu-22.04</code></pre>
-                </li>
-                <li>Reinicie o computador. O terminal do Ubuntu será aberto para que você crie seu usuário e senha padrão.</li>
+                <li>Abra o <strong>PowerShell</strong> ou <strong>Prompt de Comando</strong> como Administrador.</li>
+                <li>Execute o comando para instalar o WSL e a distribuição Ubuntu 22.04:</li>
             </ol>
-    
-            <h2>Passo 2: Criando um Usuário Dedicado 'frappe'</h2>
-            <p>É uma boa prática não usar seu usuário principal ou `root`. Vamos criar um usuário `frappe` com privilégios de administrador.</p>
-            <ol>
-                <li>No terminal do Ubuntu, crie o novo usuário:
-                    <pre><code>sudo adduser frappe</code></pre>
-                </li>
-                <li>Adicione o usuário ao grupo `sudo`:
-                    <pre><code>sudo usermod -aG sudo frappe</code></pre>
-                </li>
+            <pre><code>wsl --install -d Ubuntu-22.04</code></pre>
+            <ol start="3">
+                <li><strong>Reinicie o computador</strong> quando solicitado. Após a reinicialização, o terminal do Ubuntu será aberto para que você crie seu usuário e senha padrão do Linux.</li>
             </ol>
-            <div class="note">
-                <h3>Ponto Chave: Trabalhando como o Usuário `frappe`</h3>
-                <p>Para evitar 99% dos erros de permissão, <strong>sempre</strong> troque para o usuário `frappe` antes de executar comandos do `bench`. Feche e abra um novo terminal, e execute:</p>
-                <pre><code>su - frappe</code></pre>
-                <p>O hífen (<code>-</code>) é crucial. Ele simula um login completo, carregando todas as configurações do usuário `frappe`.</p>
-            </div>
-    
-            <h2>Passo 3: Instalação das Dependências Essenciais (Com Soluções)</h2>
-            <p>Logado como usuário <strong>`frappe`</strong>, vamos instalar o que o Frappe precisa.</p>
-            <ol>
-                <li>Atualize o sistema:
-                    <pre><code>sudo apt update && sudo apt upgrade -y</code></pre>
-                </li>
-                <li>Instale as dependências básicas:
-                    <pre><code>sudo apt install -y git python3-dev python3-pip python3-venv mariadb-server redis-server</code></pre>
-                </li>
-                <li><strong>Configure o MariaDB:</strong> Defina a senha do usuário `root` do banco de dados.
-                    <pre><code>sudo mariadb-secure-installation</code></pre>
-                </li>
-                <li><strong>Instale o Node.js via NVM (A Forma Correta e Definitiva):</strong>
-                    <p>Usar o NVM (Node Version Manager) evita erros de permissão (`EACCES`) e garante a versão correta do Node (18+).</p>
-                    <pre><code># Instala o NVM
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 
-# Carrega o NVM no terminal atual. Se 'nvm' não for encontrado, rode este comando!
-source ~/.bashrc
-
-# Instala o Node.js v18 e o define como padrão
-nvm install 18
-nvm alias default 18</code></pre>
-                </li>
-                <li><strong>Instale Yarn e o Frappe Bench:</strong>
-                    <pre><code>npm install -g yarn
-pip install frappe-bench</code></pre>
-                </li>
+            <h2>Passo 2: Criando um Usuário Dedicado 'frappe' (Etapa Crucial)</h2>
+            <p>Para evitar 99% dos problemas de permissão, nunca execute os comandos do Frappe como <code>root</code> ou com seu usuário padrão. Vamos criar um usuário dedicado chamado <code>frappe</code>.</p>
+            <ol>
+                <li>No terminal do Ubuntu, crie o novo usuário:</li>
             </ol>
-    
-            <h2>Passo 4: Conectando o VS Code ao WSL</h2>
-            <p>Para um fluxo de trabalho ideal, veja nosso <a href="artigo-vscode-wsl.html">guia detalhado sobre como conectar o VS Code ao WSL</a>.</p>
-    
-            <h2>Passo 5: A Sequência Vencedora para Criar e Iniciar seu Site Frappe</h2>
-            <p>Com o VS Code conectado, abra o terminal integrado (`Ctrl + ``). A seguir, a sequência de comandos que resolve os problemas mais comuns de uma instalação.</p>
+            <pre><code>sudo adduser frappe</code></pre>
+            <ol start="2">
+                <li>Adicione este usuário ao grupo <code>sudo</code> para que ele possa executar tarefas administrativas:</li>
+            </ol>
+            <pre><code>sudo usermod -aG sudo frappe</code></pre>
+            <ol start="3">
+                <li>Feche o terminal atual e abra um novo. A partir de agora, <strong>sempre</strong> troque para este usuário antes de começar a trabalhar:</li>
+            </ol>
+            <pre><code>su - frappe</code></pre>
+            <blockquote><strong>Importante:</strong> O hífen (<code>-</code>) é essencial. Ele simula um login completo, carregando o ambiente e as configurações corretas do usuário <code>frappe</code>.</blockquote>
+
+            <h2>Passo 3: Instalando as Dependências do Sistema</h2>
+            <p>Agora, como usuário <code>frappe</code>, vamos instalar todos os pacotes de software necessários.</p>
+            <h3>1. Atualize a lista de pacotes do Ubuntu:</h3>
+            <pre><code>sudo apt update && sudo apt upgrade -y</code></pre>
+            <h3>2. Instale os pacotes essenciais:</h3>
+            <p>Isso inclui Git, Python, MariaDB (banco de dados), Redis (cache), e outras bibliotecas necessárias.</p>
+            <pre><code>sudo apt install -y git python3-dev python3-pip python3-venv mariadb-server redis-server libmariadb-dev pkg-config curl xvfb libfontconfig1</code></pre>
+            <h3>3. Configure e proteja o MariaDB:</h3>
+            <p>Este script interativo definirá a senha do superusuário (<code>root</code>) do banco de dados.</p>
+            <pre><code>sudo mariadb-secure-installation</code></pre>
+            <p>Siga as instruções na tela. É <strong>extremamente importante que você defina e anote a senha do root do MariaDB</strong>, pois ela será necessária em breve.</p>
+
+            <h2>Passo 4: Instalando Node.js e Ferramentas de Frontend</h2>
+            <p>O Frappe utiliza Node.js e Yarn para gerenciar seus assets de frontend. A melhor forma de instalar o Node.js é através do NVM (Node Version Manager).</p>
+            <ol>
+                <li><strong>Instale o NVM:</strong></li>
+            </ol>
+            <pre><code>curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash</code></pre>
+            <ol start="2">
+                <li><strong>Carregue o NVM no seu terminal:</strong> (Feche e reabra o terminal ou execute o comando abaixo)</li>
+            </ol>
+            <pre><code>source ~/.bashrc</code></pre>
+            <ol start="3">
+                <li><strong>Instale a versão 18 do Node.js (recomendada):</strong></li>
+            </ol>
+            <pre><code>nvm install 18</code></pre>
+            <ol start="4">
+                <li><strong>Instale o Yarn globalmente:</strong></li>
+            </ol>
+            <pre><code>npm install -g yarn</code></pre>
             
-            <h3>1. Crie a "Bench" (a pasta do projeto)</h3>
-            <pre><code># Rode isso dentro da pasta /home/frappe
-bench init frappe-bench
-cd frappe-bench</code></pre>
-    
-            <h3>2. A Sequência de Reparo (se algo der errado)</h3>
-            <p>Se você chegar a uma tela de erro no navegador, esta é a sequência para consertar um site quebrado ou com configuração dessincronizada.</p>
-    
-            <div class="note">
-                <h4>A Lógica do Reparo</h4>
-                <p>O erro mais comum é a configuração do site (<code>site_config.json</code>) não bater com as credenciais no banco de dados. A solução é apagar completamente o site problemático e recriá-lo do zero em seu ambiente agora estável.</p>
-            </div>
-            
+            <h2>Passo 5: Instalando o Frappe Bench (A Ferramenta de Linha de Comando)</h2>
+            <p><code>bench</code> é a CLI que você usará para gerenciar todo o seu ambiente Frappe.</p>
             <ol>
-                <li><strong>"Derrube" o site à força (`--force`):</strong>
-                    <p>Este comando ignora erros de backup (como "Access Denied") e apaga o site quebrado.</p>
-                    <pre><code>bench drop-site seu.site.local --force</code></pre>
-                </li>
-                <li><strong>Recrie o site do zero:</strong>
-                    <p>Agora que o antigo foi removido, crie um novo e limpo.</p>
-                    <pre><code>bench new-site seu.site.local</code></pre>
-                    <em>Ele pedirá a senha do <strong>`root` do MariaDB</strong>. Depois, pedirá para você criar e confirmar a senha do usuário <strong>`Administrator`</strong>. Anote esta senha!</em>
-                </li>
-                <li><strong>Defina o site como padrão:</strong>
-                    <p>Isso resolve o erro "Not Found" no navegador.</p>
-                    <pre><code>bench use seu.site.local</code></pre>
-                </li>
-                <li><strong>Inicie o servidor:</strong>
-                    <pre><code>bench start</code></pre>
-                </li>
+                <li><strong>Instale o <code>frappe-bench</code> usando <code>pip</code>:</strong></li>
             </ol>
-    
-            <h3>3. Solução para "Address already in use"</h3>
-            <div class="warning">
-                <p>Se o <code>bench start</code> falhar com este erro, o serviço global do Redis está em conflito. Resolva com:</p>
-                <pre><code># Pare e desabilite o serviço global do Redis
-sudo systemctl stop redis-server
-sudo systemctl disable redis-server
+            <pre><code>pip install frappe-bench</code></pre>
+            <blockquote><strong>Nota:</strong> Em sistemas Ubuntu mais recentes, você pode encontrar um erro sobre "externally-managed-environment". Se isso ocorrer, use a flag <code>--break-system-packages</code>.</blockquote>
+            <ol start="2">
+                <li><strong>Verifique se o <code>bench</code> está no seu PATH:</strong></li>
+            </ol>
+            <p>Execute <code>bench --version</code>. Se o comando não for encontrado, adicione o diretório local de binários ao seu PATH:</p>
+            <pre><code>echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc</code></pre>
+            <p>Execute <code>bench --version</code> novamente para confirmar.</p>
+            
+            <h2>Passo 6: Criando seu Ambiente ("Bench") e Primeiro Site</h2>
+            <p>Finalmente, vamos criar a pasta do projeto e o seu primeiro site Frappe.</p>
+            <ol>
+                <li><strong>Inicialize a "bench":</strong> Este comando criará uma pasta (<code>frappe-bench</code>), baixará o Framework e configurará o ambiente.</li>
+            </ol>
+            <pre><code># Certifique-se de estar no seu diretório home
+cd ~
+bench init frappe-bench</code></pre>
+            <ol start="2">
+                <li><strong>Entre no diretório da sua bench:</strong></li>
+            </ol>
+            <pre><code>cd frappe-bench</code></pre>
+            <ol start="3">
+                <li><strong>Crie um novo site:</strong> (Substitua <code>meu-site.local</code> pelo nome que desejar)</li>
+            </ol>
+            <pre><code>bench new-site meu-site.local</code></pre>
+            <p>O sistema pedirá a <strong>senha do <code>root</code> do MariaDB</strong> e, em seguida, você criará a senha para o usuário <strong><code>Administrator</code></strong> do seu site Frappe. Anote esta senha!</p>
 
-# Encerre processos "zumbis" que possam ter sobrado
-sudo kill -9 $(sudo lsof -t -i:11000) $(sudo lsof -t -i:13000)</code></pre>
-                <p>Após executar, tente o <code>bench start</code> novamente.</p>
-            </div>
-    
+            <h2>Passo 7: Iniciando o Servidor</h2>
+            <p>Com tudo configurado, inicie o servidor de desenvolvimento.</p>
+            <pre><code>bench start</code></pre>
+            
+            <hr>
+            
             <h2>Conclusão</h2>
-            <p>Parabéns! Abra seu navegador no Windows e acesse <a href="http://localhost:8000" target="_blank">http://localhost:8000</a>. Faça o login com o usuário <strong>`Administrator`</strong> e a senha que você acabou de criar.</p>
-            <p>Você concluiu a instalação de um ambiente de desenvolvimento robusto para o <strong>Frappe Framework</strong>. Agora você está pronto para o próximo passo: instalar aplicativos como o ERPNext!</p>
-        </div>
-    </main>
+            <p><strong>Parabéns!</strong> O seu ambiente de desenvolvimento do Frappe Framework está no ar. Abra seu navegador no Windows e acesse <a href="http://localhost:8000" target="_blank">http://localhost:8000</a>.</p>
+            <p>Faça o login com o usuário <code>Administrator</code> e a senha que você acabou de criar. Você concluiu com sucesso a instalação de uma base sólida, pronta para desenvolver ou instalar qualquer aplicativo sobre o Frappe Framework.</p>
+        </article>
+    </div>
 
-    <footer class="footer">
-        <p>© 2024 Craft Work Site. Todos os direitos reservados.</p>
-    </footer>
 </body>
 </html>
