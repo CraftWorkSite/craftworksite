@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia: Como Abrir seu Projeto Frappe (WSL) no VS Code - Craft Work Site</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="https://lh3.googleusercontent.com/ogw/AF2bZygfOb3auLe8xuFEzGxH0yGap2nrQlTwDW0g8wvt5EHJSw=s32-c-mo">
+</head>
+<body>
+    <header class="header">
+        <h1>Craft Work Site</h1>
+    </header>
+
+    <nav class="nav">
+        <ul>
+            <li><a href="index.html#hero">Início</a></li>
+            <li><a href="index.html#services">Serviços</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="index.html#pricing">Preços</a></li>
+            <li><a href="index.html#faq">FAQ</a></li>
+            <li><a href="index.html#contact">Contato</a></li>
+        </ul>
+    </nav>
+    
+    <main>
+        <div class="article-content">
+            <a href="blog.html" class="back-link">&larr; Voltar para o Blog</a>
+            <h1>Guia Essencial: Como Abrir seu Projeto Frappe (WSL) no VS Code</h1>
+            <p>
+                O desenvolvimento com Frappe no Windows se torna incrivelmente poderoso quando integramos o VS Code ao WSL. Este guia mostra o fluxo de trabalho exato para abrir seu projeto da maneira correta, garantindo que você use as ferramentas do Linux dentro da interface do Windows.
+            </p>
+
+            <h2>Pré-requisitos</h2>
+            <ul>
+                <li>Visual Studio Code instalado no Windows (com a opção "Adicionar ao PATH" marcada na instalação).</li>
+                <li>Extensão <strong>"WSL"</strong> da Microsoft instalada no VS Code.</li>
+                <li>Seu ambiente com Ubuntu e Frappe Bench já inicializado no diretório <code>/home/frappe/frappe-bench</code>.</li>
+            </ul>
+
+            <h2>Passo 1: Iniciar o VS Code e Conectar ao WSL</h2>
+            <p>Em vez de abrir o projeto diretamente, primeiro conectamos o VS Code ao ambiente Linux.</p>
+            <ol>
+                <li>Abra o Visual Studio Code no seu Windows da forma normal.</li>
+                <li>No canto inferior esquerdo, clique no ícone verde com o símbolo <code>&gt;&lt;</code>.</li>
+                <li>Na paleta de comandos que aparece no topo, selecione a opção <strong>"Conectar ao WSL"</strong>.</li>
+                <li>Uma nova janela do VS Code será aberta. Observe que o ícone verde agora mostrará <strong>"WSL: Ubuntu-22.04"</strong>. Isso confirma que a conexão está ativa.</li>
+            </ol>
+
+            <h2>Passo 2: Abrir a Pasta Correta do Projeto</h2>
+            <div class="warning">
+                <p>Este é o passo mais importante. Não abra a pasta do seu usuário padrão ou do `root`. Você precisa abrir a pasta onde o projeto Frappe foi criado.</p>
+            </div>
+            <ol>
+                <li>Na janela do VS Code já conectada ao WSL, vá ao menu <strong>Arquivo > Abrir Pasta...</strong> (File > Open Folder...).</li>
+                <li>Na caixa de diálogo, navegue até o caminho exato do seu projeto. O caminho é:
+                    <pre><code>/home/frappe/frappe-bench</code></pre>
+                </li>
+                <li>Selecione a pasta `frappe-bench` e clique em OK.</li>
+                <li>A barra lateral do explorador será preenchida com as pastas do seu projeto (`apps`, `sites`, etc.).</li>
+            </ol>
+            
+            <h2>Passo 3: Usar o Terminal Integrado (Com o Usuário Correto)</h2>
+            <p>Agora que o projeto está aberto, você pode gerenciar tudo pelo terminal integrado do VS Code.</p>
+            <ol>
+                <li>Abra o terminal integrado com o atalho <strong><code>Ctrl + `</code></strong> (a tecla de crase).</li>
+                <li>
+                    O terminal será aberto, mas pode estar logado como seu usuário padrão do WSL ou como `root`. Para executar comandos do `bench` com segurança, <strong>sempre troque para o usuário `frappe`</strong>:
+                    <pre><code>su - frappe</code></pre>
+                </li>
+                <li>Após a troca, seu prompt mudará para `frappe@NOME-DO-PC:~$`. Agora, navegue para o diretório do projeto:
+                    <pre><code>cd frappe-bench/</code></pre>
+                </li>
+            </ol>
+
+            <h2>Conclusão: Você Está Pronto!</h2>
+            <p>
+                Parabéns! Seu ambiente está perfeitamente configurado. A partir deste terminal, dentro do VS Code, você pode executar todos os seus comandos, como <strong><code>bench start</code></strong> para iniciar o servidor. Você pode editar os arquivos na interface do VS Code e ver as mudanças refletidas em tempo real.
+            </p>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>© 2024 Craft Work Site. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
