@@ -139,6 +139,99 @@ section#hero.active, section#contact.active { display: flex; align-items: center
     border-color: #aaa;
 }
 
+.blog-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2.5rem;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Lista de artigos */
+.article-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 2rem;
+}
+
+.article-list li {
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 1rem;
+}
+
+.article-list a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: #3498db;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.article-list a:hover {
+    color: #2980b9;
+}
+
+/* Contêiner do conteúdo do artigo */
+.article-content {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2.5rem;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.article-content h1, .article-content h2, .article-content h3 {
+    text-align: left; /* Alinha os títulos do artigo à esquerda */
+}
+
+.article-content p, .article-content li {
+    text-align: justify;
+}
+
+/* Link de 'Voltar para o Blog' */
+.back-link {
+    display: inline-block;
+    margin-bottom: 2rem;
+    color: #3498db;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Estilos para o conteúdo do artigo (caixas de nota, aviso, código) */
+.note {
+    background-color: #eaf2f8;
+    border-left: 5px solid #3498db;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 0 5px 5px 0;
+}
+
+.warning {
+    background-color: #fdf2e9;
+    border-left: 5px solid #e67e22;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 0 5px 5px 0;
+}
+
+pre {
+    background-color: #2d2d2d;
+    color: #f8f8f2;
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin: 15px 0;
+}
+
+code {
+    font-family: "Fira Code", "Consolas", "Monaco", monospace;
+    font-size: 0.95em;
+}
 
 /* --- DESIGN RESPONSIVO --- */
 @media (max-width: 768px) {
